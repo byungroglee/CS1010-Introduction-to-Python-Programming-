@@ -1,0 +1,74 @@
+#-------------------------------------------------------------------------------
+# Name:        landscape.oy
+# Purpose:     In this program, I will write a complete program. This project will help you to practice functions.
+#
+# Author:      Byung Rog Lee
+#
+# Created:     23-04-2023
+# Copyright:   (c) holyr 2023
+# Licence:     <your licence>
+#-------------------------------------------------------------------------------
+
+def main():
+    pass
+
+if __name__ == '__main__':
+    main()
+
+account = input()
+number_of_bushes = int(input())
+flower_bed_length = int(input())
+flower_bed_width = int(input())
+lawn_square_footage = float(input())
+
+def convertAcct2String(acct):
+    if acct == 'P':
+        acct = 'Preferred'
+        return acct
+    if acct == 'N':
+        acct = 'New'
+        return acct
+    if acct == 'R':
+        acct = 'Regular'
+        return acct
+
+def getBushCost(acct, num_bush):
+    bush_cost = 10
+    discount = 0.8
+    if acct == 'N':
+        cost_1 = num_bush * bush_cost * discount
+        return cost_1
+    elif acct == 'P':
+        if num_bush >= 5:
+            return (num_bush - 5) * bush_cost
+        else:
+            return 0
+    else:
+        return num_bush * 10
+
+def getFlowerBedCost(length, width):
+    cost_2 = length * width *2
+    return cost_2
+
+def getFertilCost(area):
+    bag_cost = 11
+    bag_area = 5000
+    num_bag = area // bag_area
+    if area % 5000 != 0:
+        num_bag = num_bag + 1
+        cost_3 = num_bag * bag_cost
+        return cost_3
+    else:
+        cost_3 = num_bag * bag_cost
+        return cost_3
+
+
+
+print('======= Falcon Landing =======')
+print('Account Type: ', convertAcct2String(account))
+print(f'Bush Cost:           ${getBushCost(account, number_of_bushes):.2f}')
+print(f'Flower Bed Cost:     ${getFlowerBedCost(flower_bed_length, flower_bed_width):.2f}')
+print(f'Fertilizer Cost:     ${getFertilCost(lawn_square_footage):.2f}')
+final_cost = getBushCost(account, number_of_bushes) + getFlowerBedCost(flower_bed_length, flower_bed_width) + getFertilCost(lawn_square_footage)
+print(f'Final Cost:          ${final_cost:.2f}')
+print('==============================')
