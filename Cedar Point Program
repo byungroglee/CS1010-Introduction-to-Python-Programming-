@@ -1,0 +1,77 @@
+#-------------------------------------------------------------------------------
+#// Program #3 - Cedar Point Program
+#// Programmer: Byung Rog Lee
+#// Class: CS1010
+#// Due Date: March 19 2023
+#// Purpose of program: To help people calculate the cost for their park attendees
+#-------------------------------------------------------------------------------
+
+def main():
+    pass
+
+if __name__ == '__main__':
+    main()
+
+# Dictionaries
+admission_prices = {'Platinum': 230, 'Gold': 135, 'Twoday': 70, 'Oneday': 45}
+meal_prices = {'Allday': 31.55, 'Single': 14.95, 'Snack': 8.25, 'None': 0}
+
+
+
+# Input Section
+admission_type = input()
+num_admission = int(input())
+meal_type = input()
+if meal_type =='None':
+    num_meal = 0
+else:
+    num_meal = int(input())
+
+
+# Calculation Section
+admission_cost = admission_prices[admission_type]
+meal_cost = float(meal_prices[meal_type])
+total_admission = num_admission * admission_cost
+total_meal = num_meal * meal_cost
+
+if admission_type == 'Twoday' or admission_type == 'Oneday':
+    parking_fee = 20
+else:
+    parking_fee = 0
+
+if total_admission >= 1000:
+    admission_discount = float(0.15) * total_admission
+elif total_admission >= 500:
+        admission_discount = float(0.10) * total_admission
+elif total_admission >= 100:
+        admission_discount = float(0.05) * total_admission
+else:
+    admission_discount = int(0) * admission_cost
+
+
+subtotal = total_admission + total_meal + parking_fee - admission_discount
+tax = float(0.07) * subtotal
+total = subtotal + tax
+
+# Output Section
+print('Enter your admission choice: Platinum, Gold, Twoway or Oneday:', admission_type)
+print('How many ', admission_type, ':', num_admission)
+print('Enter your meal choice: Allday, Single, Snack or None:', meal_type)
+print('How many ', meal_type, ':', num_meal)
+print()
+print('----------------------------------------------')
+print('Cedar Point:')
+print('----------------------------------------------')
+print(f'Admission:                      {num_admission} {admission_type}')
+print(f'Meal:                           {num_meal} {meal_type}')
+print('----------------------------------------------')
+print(f'Admission Cost:                 $      {total_admission:.2f}')
+print(f'Meal Cost:                      $      {total_meal:.2f}')
+print(f'Parking:                        $      {parking_fee:.2f}')
+print(f'Admission Discount:             $      {admission_discount:.2f}')
+print('----------------------------------------------')
+print(f'Subtotal:                       $      {subtotal:.2f}')
+print('----------------------------------------------')
+print(f'Tax:                            $      {tax:.2f}')
+print('----------------------------------------------')
+print(f'Final Total:                    $      {total:.2f}')
