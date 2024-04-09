@@ -1,0 +1,145 @@
+#-------------------------------------------------------------------------------
+# Name:        Chutes.py
+# Purpose:     Coding a program to play a children's game
+#
+# Author:      Byung Rog Lee
+#
+#
+# Due Date:    April 16th 2023
+#-------------------------------------------------------------------------------
+
+
+import random
+
+def main():
+
+    #TODO SCROLL DOWN AND SEE PRINT STATEMENTS BELOW FOR ALL VARIABLE NAMES
+    #TODO Write them down if that is the best way to remember them.
+    #TODO set turn to 0, player1 and player2 positions to 1
+    #????
+    turn = 0
+    player1pos = 1
+    player2pos = 1
+
+
+    #TODO set boolean winner to false
+    #????
+
+
+    #TODO input the names for each the players
+    #????
+    player1name = input()
+    player2name = input()
+
+    #Dipslay the header for the game
+    #IF YOU ARE LOOKING FOR VARIABLE NAMES? KEEP SCROLLING
+    print('{:10s}{:10s}{:10s}{:10s}'.format("Player", "Turn",
+                "Roll", "Pos"))
+    print('{:10s}{:10s}{:10s}{:10s}'.format("------", "----",
+                "----", "---"))
+
+    #TODO create a loop that iterates until there is a winner
+    while player1pos < 81 and player2pos < 81:#????:
+
+        #TODO update the value of turn, turn is the current round of play
+        #????
+        turn += 1
+
+        #Generates a random number from 1 to 6 for player 1
+        roll1 = random.randint(1,6)
+
+        #TODO add roll1 to update player 1's position
+        #????
+
+
+        #TODO check the chutes and ladder for the player 1
+        #????
+        if player1pos == 11:
+            player1pos == 4
+        elif player1pos == 15:
+            player1pos == 7
+        elif player1pos == 30:
+            player1pos == 21
+        elif player1pos == 44:
+            player1pos == 31
+        elif player1pos == 58:
+            player1pos == 43
+        elif player1pos == 64:
+            player1pos == 54
+        else:
+            if player1pos < 81:
+                player1pos += roll1
+
+        #end chutes and ladder for player 1
+
+        #code to print player 1, play close attention to variable names
+        #YOU HAVE FOUD THE VARIABLE NAMES!
+        print('{:10s}{:10s}{:10s}{:10s}'.format(player1name, str(turn), str(roll1),
+                        str(player1pos)))
+
+        #TODO if player 1 has won set condition to get out of the loop
+        #????
+        if player1pos >= 81:
+            break
+
+
+        #Generates a random number from 1 to 6 for player 2
+        roll2 = random.randint(1,6)
+
+        #TODO add roll2 to update player 2's position
+        #????
+
+
+
+        #TODO check the chutes and ladder for the player 2
+        #???? Note, depending how you code this, it may need to be indented
+        if player2pos == 11:
+            player2pos == 4
+        elif player2pos == 15:
+            player2pos == 7
+        elif player2pos == 30:
+            player2pos == 21
+        elif player2pos == 44:
+            player2pos == 31
+        elif player2pos == 58:
+            player2pos == 43
+        elif player2pos == 64:
+            player2pos == 54
+        else:
+            if player2pos < 81:
+                player2pos += roll2
+
+
+        #end chutes and ladder for player 2
+
+        #code to print player2, play close attention to variable names
+        #YOU HAVE FOUD THE VARIABLE NAMES!
+        print('{:10s}{:10s}{:10s}{:10s}'.format(player2name, str(turn), str(roll2),
+                        str(player2pos)))
+        print('==================================')
+
+
+        #TODO if player 2 has won set condition to get out of the loop
+        #????
+        if player2pos >= 81:
+            break
+
+
+
+
+     #end of the while loop
+
+    #TODO determine and display the winner  (see sample output)
+    #????
+    if player1 > player2:
+        print(f'At position {player1pos}, {player1name} is the winner!')
+        print(f'{player2name} has been eliminated')
+    else:
+        print(f'At position {player2pos}, {player2name} is the winner!')
+        print(f'{player1name} has been eliminated')
+
+
+
+main()
+# this will pause your program if you run it from the desktop
+input('Press any key to end program: ')
